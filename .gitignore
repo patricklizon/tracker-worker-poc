@@ -1,0 +1,22 @@
+# Enviromental variables
+.env
+
+# Build
+dist/
+public/
+
+# Logs
+*.log
+*.log*
+
+# Cache
+.eslintcache
+
+# Optional npm cache directory
+.npm
+
+# Dependency directories
+node_modules/
+
+# Tests
+coverage/
