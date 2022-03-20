@@ -67,7 +67,6 @@ const spanId = nanoid().substring(0, 16);
 async function post(payload: string): Promise<void> {
   await self.fetch("/quotation/v1/event/frontend/", {
     method: "POST",
-    mode: "no-cors",
     headers: {
       "Content-Type": "application/json",
       "X-B3-SpanId": spanId,
