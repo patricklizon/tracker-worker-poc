@@ -60,7 +60,7 @@ export function useDataLakeTracker<
   const track = useCallback(
     function track(event: E) {
       const message: DataLakeTrackerMessage = {
-        workerName: "data-lake-tracker-worker",
+        workerName: WORKER_NAME,
         eventName: event.name,
         eventPayload: "payload" in event ? event.payload : undefined,
         appData,
