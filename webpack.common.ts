@@ -1,11 +1,10 @@
+import fs from "fs";
 import path from "path";
 
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import { Configuration } from "webpack";
+import dotenv from "dotenv";
+import { Configuration, DefinePlugin } from "webpack";
 
 const commonConfig: Configuration = {
-  entry: path.resolve(__dirname, "src/index.tsx"),
-
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
@@ -17,23 +16,32 @@ const commonConfig: Configuration = {
         exclude: /(node_modules)/,
         use: { loader: "swc-loader" },
       },
-      {
-        test: /\.svg?$/,
-        use: { loader: "raw-loader" },
-      },
     ],
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      cache: true,
-      filename: "index.html",
-      title: "hello universe",
-      template: path.resolve(__dirname, "src/index.html"),
-      publicPath: "/",
-    }),
-  ],
+  plugins: [new DefinePlugin(getEnvKeys())],
 };
+
+export function getEnvFileValues() {
+  const env = dotenv.config().parsed;
+  const baseEnvPath = "/.env";
+  const extension = env?.ENV ? "." + env.ENV : "";
+  const envPath = path.join(__dirname, baseEnvPath + extension);
+  const envFilePath = fs.existsSync(envPath) ? envPath : baseEnvPath;
+  return dotenv.config({ path: envFilePath }).parsed ?? {};
+}
+
+function getEnvKeys(): Record<string, string> {
+  const fileEnv = getEnvFileValues();
+
+  return Object.entries(fileEnv).reduce<Record<string, string>>(
+    (acc, [key, value]) => {
+      acc[`process.env.${key}`] = JSON.stringify(value);
+      return acc;
+    },
+    {}
+  );
+}
 
 // eslint-disable-next-line import/no-default-export
 export default commonConfig;
