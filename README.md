@@ -1,14 +1,11 @@
-# core-boilerplate &middot; most basic SPA boilerplate
+# Data lake event &middot; POC
 
-< short description >
+POC of implementing iptiq's event tracker as a web Worker.
 
 ## Table of content
 
 - [Prerequisites](#Prerequisites)
 - [Setup](#Setup)
-- [Resources](#Resources)
-- [Stack](#Stack)
-- [Scripts](#Scripts)
 
 ## Prerequisites
 
@@ -20,7 +17,7 @@ _It's recommended to use node version manger (ie. [fnm](https://github.com/Schni
 ## Setup
 
 ```sh
-# Copy environmental variables
+# Create environmental variables
 cp .env.example .env
 
 # Install dependencies
@@ -30,65 +27,6 @@ npm ci
 npm start
 ```
 
-## Resources
+### Loading example
 
-< section description >
-
-## Stack
-
-### Frontend
-
-- [TypeScript](https://www.typescriptlang.org/) - typed language build on top of JavaScript,
-- [React](https://reactjs.org/) - ui library used for development,
-- [CSS modules](https://github.com/css-modules/css-modules) - scoped css
-
-### Tools
-
-- [webpack](https://webpack.js.org) - bundler
-- [swc](https://swc.rs) - javascript / typescript compiler
-- [eslint](https://eslint.org) - static code analysis
-- [prettier](https://prettier.io) - code formatter
-- [husky](https://github.com/typicode/husky) - git hooks
-- [autoprefixer](https://github.com/postcss/autoprefixer) - PostCSS plugin to parse CSS and add vendor prefixes to CSS rules
-
-### Testing
-
-- [mocha](https://github.com/mochajs/mocha) - test runner
-- [chai](https://github.com/chaijs/chai) - assertion library
-- [sinon](https://github.com/sinonjs/sinon) - test spies, stubs and mocks
-- [testing-library](https://testing-library.com/docs/react-testing-library/intro) - testing utilities
-- [user-event](https://testing-library.com/docs/ecosystem-user-event/) - more advanced simulation of browser interactions
-
-## Scripts
-
-Summary of npm scripts.
-
-### General
-
-| Script  | Description                    |
-| ------- | ------------------------------ |
-| `start` | starts application in DEV mode |
-| `build` | builds app in PROD mode        |
-
-### Test
-
-| Script        | Description               |
-| ------------- | ------------------------- |
-| `test`        | run unit tests            |
-| `test:watch`  | run `test` in watch mode  |
-| `test:types`  | validates TS types        |
-| `test:format` | validates code formatting |
-| `test:lint`   | validates linting rules   |
-
-### Fix
-
-| Script       | Description                |
-| ------------ | -------------------------- |
-| `fix:format` | tries to fix formatting    |
-| `fix:lint`   | tries to fix linter issues |
-
-### Other
-
-| Script        | Description                                     |
-| ------------- | ----------------------------------------------- |
-| `lint:staged` | run `fix:format` and `fix:lint` on staged files |
+Set env variable `EXAMPLE` to the name of one of the [examples](./examples/) file.
