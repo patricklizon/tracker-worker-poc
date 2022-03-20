@@ -2,33 +2,22 @@
   "env": {
     "coreJs": 3
   },
-  "exclude": [".*.js$", ".*.map$"],
+  "exclude": [".*.map$"],
   "sourceMaps": true,
   "jsc": {
-    "baseUrl": "./",
-    "paths": {
-      "@test": ["test/index"],
-      "@components/*": ["src/components/*"]
-    },
+    "target": "es2016",
     "parser": {
       "syntax": "typescript",
       "tsx": true,
       "decorators": false,
-      "dynamicImport": false
+      "dynamicImport": true
     },
     "transform": {
       "react": {
-        "development": false,
-        "refresh": true,
         "runtime": "automatic",
-        "throwIfNamespace": true
-      },
-      "optimizer": {
-        "globals": {
-          "vars": {
-            "__DEBUG__": "true"
-          }
-        }
+        "throwIfNamespace": true,
+        "development": false,
+        "refresh": true
       }
     }
   }
